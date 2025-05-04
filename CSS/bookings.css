@@ -1,0 +1,364 @@
+/* Enhanced Bookings Management Styles */
+.content-area {
+    padding: 25px;
+    background-color: var(--light);
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.summary-card h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--gray);
+    margin: 0 0 15px;
+}
+
+.summary-card p {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary);
+    position: relative;
+}
+
+.summary-card p::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--primary-light);
+    border-radius: 3px;
+}
+
+.date-range {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 15px;
+}
+
+.date-range span {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 25px;
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--gray-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--dark);
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.table-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+th {
+    font-weight: 600;
+    color: var(--gray);
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: var(--light);
+    position: sticky;
+    top: 0;
+}
+
+tr:hover {
+    background-color: var(--primary-light);
+}
+
+.workout-type {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+.type-yoga {
+    background: rgba(9, 132, 227, 0.1);
+    color: var(--info);
+    border: 1px solid rgba(9, 132, 227, 0.2);
+}
+
+.type-hiit {
+    background: rgba(253, 203, 110, 0.1);
+    color: var(--warning);
+    border: 1px solid rgba(253, 203, 110, 0.2);
+}
+
+.type-strength {
+    background: rgba(108, 92, 231, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.type-cardio {
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success);
+    border: 1px solid rgba(0, 184, 148, 0.2);
+}
+
+.type-zumba {
+    background: rgba(214, 48, 49, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(214, 48, 49, 0.2);
+}
+
+.type-crossfit {
+    background: rgba(99, 110, 114, 0.1);
+    color: var(--gray);
+    border: 1px solid rgba(99, 110, 114, 0.2);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+.status-confirmed {
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success);
+    border: 1px solid rgba(0, 184, 148, 0.2);
+}
+
+.status-cancelled {
+    background: rgba(214, 48, 49, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(214, 48, 49, 0.2);
+}
+
+.status-pending {
+    background: rgba(253, 203, 110, 0.1);
+    color: var(--warning);
+    border: 1px solid rgba(253, 203, 110, 0.2);
+}
+
+.action-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-icon.view {
+    background: rgba(108, 92, 231, 0.1);
+    color: var(--primary);
+}
+
+.btn-icon.view:hover {
+    background: rgba(108, 92, 231, 0.2);
+}
+
+.btn-icon.cancel {
+    background: rgba(214, 48, 49, 0.1);
+    color: var(--danger);
+}
+
+.btn-icon.cancel:hover {
+    background: rgba(214, 48, 49, 0.2);
+}
+
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 0;
+    margin-top: 20px;
+    border-top: 1px solid var(--gray-light);
+}
+
+.table-info {
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Enhanced Booking Details Modal */
+.booking-details {
+    margin-bottom: 25px;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.detail-label {
+    font-weight: 600;
+    width: 120px;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.detail-value {
+    flex: 1;
+    font-weight: 500;
+    padding: 10px 15px;
+    background: var(--light);
+    border-radius: 6px;
+    border-left: 3px solid var(--primary);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .table-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .date-range {
+        margin-left: 0;
+        margin-top: 15px;
+        width: 100%;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .detail-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .detail-value {
+        width: 100%;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .modal-actions .btn {
+        width: 100%;
+    }
+}

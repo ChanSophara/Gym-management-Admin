@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Boss Gym - Trainers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/trainers.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar Navigation (same as dashboard) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../img/logo.jpg" alt="Big Boss Gym Logo" class="logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="members.html">
+                            <i class="fas fa-users"></i>
+                            <span>Members</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="trainers.html">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Trainers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bookings.html">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Bookings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="feedback.html">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>Feedback</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contacts.html">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contacts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Back to Site</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="admin-profile">
+                    <img src="../img/Tepy.jpg" alt="Admin">
+                    <div>
+                        <h4>Admin</h4>
+                        <small>Super Admin</small>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>Trainers Management</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="trainer-search" placeholder="Search trainers...">
+                    </div>
+                    <button class="btn btn-primary" id="add-trainer-btn">
+                        <i class="fas fa-plus"></i> Add Trainer
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Trainers Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>All Trainers</h3>
+                        <div class="table-actions">
+                            <select id="trainers-filter" class="form-control">
+                                <option value="all">All Trainers</option>
+                                <option value="active">Active</option>
+                                <option value="onleave">On Leave</option>
+                            </select>
+                            <button class="btn btn-outline" id="export-trainers">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="trainers-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Specialty</th>
+                                        <th>Experience</th>
+                                        <th>Rating</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Trainers will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-footer">
+                            <div class="table-info" id="trainer-count">Showing 0 trainers</div>
+                            <div class="pagination" id="trainers-pagination">
+                                <button class="btn btn-outline" disabled id="prev-page">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span id="page-info">Page 1 of 1</span>
+                                <button class="btn btn-outline" disabled id="next-page">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Trainer Modal -->
+    <div class="modal" id="trainer-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Trainer</h3>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="trainer-form">
+                    <input type="hidden" id="trainer-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trainer-name">Full Name</label>
+                            <input type="text" id="trainer-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainer-email">Email</label>
+                            <input type="email" id="trainer-email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trainer-specialty">Specialty</label>
+                            <input type="text" id="trainer-specialty" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainer-experience">Experience (years)</label>
+                            <input type="number" id="trainer-experience" class="form-control" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trainer-schedule">Schedule</label>
+                            <textarea id="trainer-schedule" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainer-status">Status</label>
+                            <select id="trainer-status" class="form-control">
+                                <option value="active">Active</option>
+                                <option value="onleave">On Leave</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="trainer-bio">Bio</label>
+                        <textarea id="trainer-bio" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancel-trainer">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="save-trainer">Save Trainer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/trainers.js"></script>
+</body>
+</html>

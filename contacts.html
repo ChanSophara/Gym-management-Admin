@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Boss Gym - Contacts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/contacts.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar Navigation (same as dashboard) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../img/logo.jpg" alt="Big Boss Gym Logo" class="logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="members.html">
+                            <i class="fas fa-users"></i>
+                            <span>Members</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="trainers.html">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Trainers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bookings.html">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Bookings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="feedback.html">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>Feedback</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="contacts.html">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contacts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Back to Site</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="admin-profile">
+                    <img src="../img/Tepy.jpg" alt="Admin">
+                    <div>
+                        <h4>Admin</h4>
+                        <small>Super Admin</small>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>Contact Inquiries</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="contact-search" placeholder="Search contacts...">
+                    </div>
+                    <div class="date-range">
+                        <input type="date" id="start-date" class="form-control">
+                        <span>to</span>
+                        <input type="date" id="end-date" class="form-control">
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Contacts Summary -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <h3>Total Inquiries</h3>
+                        <p id="total-contacts">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>This Month</h3>
+                        <p id="monthly-contacts">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Unread</h3>
+                        <p id="unread-contacts">0</p>
+                    </div>
+                </div>
+
+                <!-- Contacts Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>All Inquiries</h3>
+                        <div class="table-actions">
+                            <select id="contacts-filter" class="form-control">
+                                <option value="all">All Inquiries</option>
+                                <option value="read">Read</option>
+                                <option value="unread">Unread</option>
+                                <option value="replied">Replied</option>
+                            </select>
+                            <button class="btn btn-outline" id="export-contacts">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="contacts-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Subject</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Contacts will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-footer">
+                            <div class="table-info" id="contact-count">Showing 0 contacts</div>
+                            <div class="pagination" id="contacts-pagination">
+                                <button class="btn btn-outline" disabled id="prev-page">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span id="page-info">Page 1 of 1</span>
+                                <button class="btn btn-outline" disabled id="next-page">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Contact Details Modal -->
+    <div class="modal" id="contact-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Contact Inquiry</h3>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="contact-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Inquiry ID:</span>
+                        <span class="detail-value" id="contact-id">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Name:</span>
+                        <span class="detail-value" id="contact-name">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Email:</span>
+                        <span class="detail-value" id="contact-email">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Subject:</span>
+                        <span class="detail-value" id="contact-subject">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Date:</span>
+                        <span class="detail-value" id="contact-date">-</span>
+                    </div>
+                    <div class="detail-row full-width">
+                        <span class="detail-label">Message:</span>
+                        <span class="detail-value" id="contact-message">-</span>
+                    </div>
+                </div>
+                <div class="reply-section">
+                    <h4>Reply to Inquiry</h4>
+                    <form id="reply-form">
+                        <div class="form-group">
+                            <label for="reply-subject">Subject</label>
+                            <input type="text" id="reply-subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reply-message">Message</label>
+                            <textarea id="reply-message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="mark-read">Mark as Read</button>
+                            <button type="submit" class="btn btn-primary">Send Reply</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/contacts.js"></script>
+</body>
+</html>
