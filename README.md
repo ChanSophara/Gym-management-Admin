@@ -1,1 +1,17 @@
-This is a Admin system to handle and manage data from Gym management system. and also make change to data and view data from backend.
+# 📊 Gym Admin Dashboard
+
+## 📘 Project Overview
+Admin panel to track gym members and handle operations efficiently.
+
+## 🛠️ Tech Stack
+- Node.js
+- Express
+- PHPMyAdmin
+
+## ✨ Features
+- Separate login for admins
+- Data visualization for gym usage
+- Admin-based order handling
+
+---
+🔗 Check it out on GitHub and explore the project in action!
